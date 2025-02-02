@@ -1,4 +1,5 @@
 import { BaryCentricOptions } from '@/algos/barycentric';
+import { makeHierarchy } from '@/algos/hierarchy';
 import { Vertex } from '@/interface/graph';
 
 export interface LayoutOptions {
@@ -7,6 +8,7 @@ export interface LayoutOptions {
   width: number;
   height: number;
   barycentricOptions?: BaryCentricOptions;
+  makeHierarchy?: typeof makeHierarchy;
 }
 
 export interface Margin {

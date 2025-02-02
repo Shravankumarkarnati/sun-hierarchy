@@ -17,7 +17,6 @@
 
 import Graph, { Vertex } from '@/interface/graph';
 import { divide } from '@/algos/weakconnect';
-import { makeHierarchy } from '@/algos/hierarchy';
 import { LayoutOptions } from '@/interface/definition';
 import { defaultOptions } from '@/interface/constant';
 import { baryCentric } from '@/algos/barycentric';
@@ -29,6 +28,7 @@ export function layout(g: Graph, options = defaultOptions): Graph[] {
   let aggregateLeftMargin: number = 0;
   const mergedOptions: LayoutOptions = { ...options };
   const { width, gutter = 0 } = mergedOptions;
+  const makeHierarchy = options.makeHierarchy ?? defaultOptions.makeHierarchy!;
   graphs.map((subGraph) => {
     const levels: Vertex[][] = makeHierarchy(subGraph);
     const { levels: orderedLevels } = baryCentric(levels, {});

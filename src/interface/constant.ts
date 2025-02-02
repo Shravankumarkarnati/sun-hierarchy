@@ -1,3 +1,4 @@
+import { makeHierarchy } from '@/algos/hierarchy';
 import { LayoutOptions } from '@/interface/definition';
 
 // default property name for graph
@@ -38,4 +39,5 @@ export const defaultOptions: LayoutOptions = {
   width: 100,
   height: 50,
   gutter: 0,
+  makeHierarchy: makeHierarchy,
 };
