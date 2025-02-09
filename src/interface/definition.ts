@@ -4,7 +4,7 @@ import { Vertex } from '@/interface/graph';
 
 export interface LayoutOptions {
   margin?: Margin;
-  gutter?: number;
+  gutter?: number | { row: number; col: number };
   width: number;
   height: number;
   barycentricOptions?: BaryCentricOptions;

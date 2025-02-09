@@ -21,6 +21,7 @@ import { LayoutOptions } from '@/interface/definition';
 import { defaultOptions } from '@/interface/constant';
 import { baryCentric } from '@/algos/barycentric';
 import { brandeskopf } from '@/algos/brandeskopf';
+import { getGutter } from '@/utils/gutter';
 
 export function layout(g: Graph, options = defaultOptions): Graph[] {
   const finalGraphs: Graph[] = [];
@@ -37,7 +38,7 @@ export function layout(g: Graph, options = defaultOptions): Graph[] {
       null,
       orderedLevels.flatMap((vertices) => vertices).map((v) => v.getOptions('x')),
     );
-    aggregateLeftMargin = maxWidth + width + (gutter || 20);
+    aggregateLeftMargin = maxWidth + width + (getGutter(gutter, 'col') || 20);
     mergedOptions.margin = { ...(mergedOptions.margin || {}), left: aggregateLeftMargin };
     finalGraphs.push(subGraph);
   });

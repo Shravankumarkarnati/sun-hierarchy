@@ -1,6 +1,7 @@
 import { Vertex } from '@/interface/graph';
 import { LayoutOptions } from '@/interface/definition';
 import { defaultOptions } from '@/interface/constant';
+import { getGutter } from '@/utils/gutter';
 
 export type VertexIdMap = { [key: string | number]: string | number };
 export type VertexIdNumberMap = { [key: string | number]: number };
@@ -312,8 +313,8 @@ function balance(levels: Vertex[][], xss: VertexIdNumberMap[], options: LayoutOp
     .map((v) => {
       const posList: number[] = xss.map((map) => map[v.id]);
       const xs: number = posList.reduce((prev, cur) => prev + cur, 0) / posList.length;
-      v.setOptions('x', left + xs * (width + gutter));
-      v.setOptions('y', top + v.getOptions('level') * (height + gutter));
+      v.setOptions('x', left + xs * (width + getGutter(gutter, 'col')));
+      v.setOptions('y', top + v.getOptions('level') * (height + getGutter(gutter, 'row')));
     });
   return levels;
 }
